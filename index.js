@@ -46,9 +46,9 @@ app.use(ejsLayouts);
 app.get('/', (req, res) => {
     homeController.home(req, res)
 });
-app.use('/api/users', usersRoutes);
-app.use('/api/projects', jwtAuth, projectsRoutes);
-app.use('/api/issues', jwtAuth, issuesRoutes);
+app.use('https://issuetracker-efyj.onrender.com/api/users', usersRoutes);
+app.use('https://issuetracker-efyj.onrender.com/api/projects', jwtAuth, projectsRoutes);
+app.use('https://issuetracker-efyj.onrender.com/api/issues', jwtAuth, issuesRoutes);
 
 // Invalid Routes Middleware
 app.use(invalidRoutesHandlerMiddleware);
