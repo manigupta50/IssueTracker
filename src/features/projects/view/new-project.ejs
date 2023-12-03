@@ -1,0 +1,58 @@
+<!-- HTML/CSS for New Project page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        .container > div {
+            display: inline-block;
+        }
+
+        div span {
+            color: white;
+            display: block;
+        }
+
+        #name input {
+            width: 50%;
+        }
+
+        div i {
+            color: white;
+            margin-top: 3vh;
+        }
+
+        label {
+            width: 50%;
+        }
+        textarea {
+            height: 10vh;
+            width: 50vw;
+        }
+    </style>
+    <title>New Project Form</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/api/projects/create" method="post">
+            <div class="field" id="name" tabindex="1">
+                <label for="name">
+                    <i class="far fa-folder-open"></i><span>Name</span>
+                </label>
+                <textarea name="name" type="text" placeholder="e.g. login/sign up feature" required></textarea>
+            </div>
+            <div class="field" id="description" tabindex="3">
+                <label for="description">
+                    <i class="far fa-edit"></i><span>Description</span>
+                </label>
+                <textarea name="description" placeholder="type here" required></textarea>
+            </div>
+            <button type="submit">Create</button>
+        </form>
+    </div> 
+</body>
+</html>
+

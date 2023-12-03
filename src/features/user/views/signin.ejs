@@ -1,0 +1,21 @@
+<!-- HTML/CSS for SignIn page -->
+
+<div class="login-form">
+    <div class="text">Sign In</div>
+    <form action="/api/users/signin" method="post">
+        <div class="field">
+            <div class="fas fa-envelope"></div>
+            <input type="text" name="email" placeholder="Email">
+        </div>
+        
+        <div class="field">
+            <div class="fas fa-lock"></div>
+            <input type="password" name="password" placeholder="Password">
+        </div>
+        
+        <button>LOGIN</button>
+        <div class="link">
+            Not a member?<a href="/api/users/signup">Signup now</a>
+        </div>
+    </form>
+</div>

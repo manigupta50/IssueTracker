@@ -1,0 +1,201 @@
+<!-- HTML/CSS for the New Issues Page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        .container > div {
+            display: inline-block;
+        }
+
+        div span {
+            color: white;
+            display: block;
+        }
+
+        #name input {
+            width: 50%;
+        }
+
+        div i {
+            color: white;
+            margin-top: 3vh;
+        }
+
+        label {
+            width: 50%;
+        }
+        textarea {
+            height: 10vh;
+            width: 50vw;
+        }
+
+        .tags-container{
+            background-image: linear-gradient(
+                to bottom, #CEAFDE, #ADD8D5
+            );
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: monospace;
+        }
+        .group{
+            background: #eee;
+            width: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .title{
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            font-size: x-large;
+            font-weight: 500;
+        }
+        .title img{
+            width: 40px;
+            margin-right: 10px;
+        }
+        .des{
+            padding: 0 20px;
+            color: #555;
+        }
+        .tags-input{
+            margin: 20px;
+            border: 1px solid #b5c8c6;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 10px;
+        }
+        .tags-input ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .tags-input li{
+            padding: 5px;
+            margin: 0 5px 5px 0;
+            border: 1px solid #5556;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .tags-input li .remove{
+            width: 12px;
+            height: 12px;
+            background-image: url(remove.png);
+            background-size: cover;
+            margin-left: 10px;
+        }
+        .tags-input input{
+            order: 1;
+            border: none;
+            outline: none;
+        }
+        .removeAll{
+            padding: 20px;
+            text-align: right;
+        }
+        .removeAll button{
+            background-image: linear-gradient(
+                to bottom, #A12CCE, #7248CF
+            );
+            color: #eee;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+
+        }
+    </style>
+    <title>New Issue Form</title>
+</head>
+<body>
+    <div class="container">
+        <form id="myForm" action="/api/issues/<%= projectId %>/create" method="post">
+            <div class="field" id="name" tabindex="1">
+                <label for="name">
+                    <i class="far fa-folder-open"></i><span>Title</span>
+                </label>
+                <textarea name="title" type="text" placeholder="e.g. login/sign up feature" required></textarea>
+            </div>
+            <div class="field" id="description" tabindex="3">
+                <label for="description">
+                    <i class="far fa-edit"></i><span>Description</span>
+                </label>
+                <textarea name="description" placeholder="type here" required></textarea>
+            </div>
+            <div class="field" id="tags-container" class="tags-container" tabindex="3">
+                <label for="tags-input">
+                    <i class="fal fa-tag"></i><span>Tags</span>
+                </label>
+                <div class="group">
+                    <div class="tags-input">
+                        <ul>
+                            <input type="text" name="" id="inputTag">
+                            <!-- <input type="hidden" id="tag-array" name="labels[]"> -->
+                            <textarea id="tag-array" name="labels" style="display:none;"></textarea>
+                        </ul>
+                    </div>
+                    <div class="removeAll">
+                        <button>Remove All</button>
+                    </div>
+                </div>
+            </div>
+            <button>Create</button>
+        </form>
+    </div> 
+
+    <script>
+        let ul = document.querySelector('.tags-input ul');
+        let input = document.querySelector('.tags-input input');
+        let deleteAll = document.querySelector('.removeAll button');
+        let tags = [];
+
+        function showTags(){
+            document.querySelectorAll('.tags-input ul li').forEach(li => li.remove());
+            tags.forEach((value, key) => {
+                let newTag = document.createElement('li');
+                newTag.innerText = value;
+                let newRemove = document.createElement('div');
+                newRemove.classList.add('remove');
+                newRemove.setAttribute('onclick', `removeTagItem(${key})`);
+                newTag.appendChild(newRemove);
+                ul.appendChild(newTag);
+            })
+        }
+        function removeTagItem(key){
+            delete tags[key];
+            showTags();
+        }
+        showTags();
+        input.addEventListener('keyup', function(event){
+        if(event.key === 'Enter'){
+            if(!tags.includes(this.value)){
+                tags.push(this.value);
+                document.getElementById("tag-array").innerText = tags;
+                showTags();
+            }
+            this.value = '';
+        }
+        })
+        deleteAll.addEventListener('click', function(){
+            tags = [];
+            showTags();
+        })
+        const form = document.getElementById('myForm');
+        form.addEventListener('keypress', function(e) {
+            if (e.keyCode === 13) {
+            e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
+

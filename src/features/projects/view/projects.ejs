@@ -1,0 +1,173 @@
+<!-- HTML/CSS for listing all the Projects -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <style>
+    body {
+      display: block;
+      text-align: left;
+      max-height:250px;
+      overflow-y:scroll;
+    }
+
+    section {
+      /* display: flex; */
+      flex-direction: column;
+      /* align-items: center; */
+      padding-bottom: 20px;
+    }
+
+    section:nth-child(2n) {
+      background-color: aliceblue;
+    }
+
+    section:nth-child(2n + 1) {
+      background-color: white;
+    }
+
+    .section-heading {
+      width: auto;
+      padding: 20px 10px 10px;
+      font-weight: 400;
+    }
+
+    .section-heading span {
+      font-size: 40px;
+      color: #2857a4;
+      display: inline-block;
+      /* padding-top: 10px; */
+      margin-right: 0.5rem;
+    }
+
+    .section-heading button {
+      display: relative;
+      float: right;
+      font-size: 40px;
+      color: #2857a4;
+      background-color: #151515;
+      border: 0;
+      margin: 0;
+    }
+
+    .section-heading form {
+      display: relative;
+      float: right;
+      font-size: 40px;
+      color: #2857a4;
+      background-color: #151515;
+      border: 0;
+      margin: 0;
+    }
+
+    #projects-container {
+      width: 100vw;
+      box-sizing: border-box;
+      display: flex;
+      flex-wrap: wrap;
+      border: 1px solid white;
+      padding: 0 50px;
+      margin-bottom: 20px;
+      justify-content: space-around;
+    }
+
+    .projects-image-container {
+      width: 100%;
+      height: 6vh;
+      min-height: 6vh;
+      overflow: hidden;
+      margin: 15px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+      float: right;
+      border: dashed .5px lightgrey;
+    }
+
+    .projects-image-container .projects-details {
+      padding: 1rem 0 0 1rem;
+    }
+
+    .projects-image-container div {
+      display: inline-block;
+    }
+
+    .projects-image-container .button-div {
+      position: relative;
+      float: right;
+      padding: 1rem 1rem 0 0;
+    }
+
+    span {
+      color: #74ADC8;
+    }
+
+    .button-div button {
+      margin: 0;
+      background-color: coral;
+      color: coral;
+      border: solid 1px black;
+      padding: 1px;
+    }
+
+    .button-div form {
+      margin: 0;
+      background-color: coral;
+      border: none;
+      border-radius: 5px;
+      padding: 1px;
+
+    }
+
+    button:hover {
+      box-shadow: 0 0 20px black;
+      color: whitesmoke;
+    }
+
+    .projects-image-container:hover {
+      box-shadow: 0 0 20px #74ADC8;
+    }
+                      
+    .projects-image-container:hover .projects-details span {
+      color: chocolate;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div id="projects">
+    <h1 class="section-heading mb75px">
+        <span>
+            <i class="fas fa-th-list"></i>
+        </span>
+        <span> Projects </span>
+        <form action="/api/projects/create" method="GET">
+          <button id="create-btn"><i class="fas fa-plus"></i></button>
+        </form>
+    </h1>
+  
+    <section id="projects-container">
+      <% projects.forEach(project => { %>
+        <div class="projects-image-container">
+            <div class="projects-details">
+                <span>
+                  <%= project.name %>
+                </span>
+                
+            </div>
+            <div class="button-div">
+              <form action="/api/issues/<%= project._id %>/" method="GET">
+                <button>view</button>
+              </form>
+            </div>
+        </div>
+      <% }) %>
+    </section>
+  </div>  
+</body>
+<script>
+</script>
+</html>

@@ -1,0 +1,29 @@
+<!-- HTML/CSS for SignUp page -->
+
+<div class="login-form">
+    <div class="text">Sign Up</div>
+    <form action="/api/users/signup" method="post">
+
+        <div class="field">
+            <div class="fas fa-user"></div>
+            <input type="text" name="name" placeholder="Name">
+        </div>
+
+        <div class="field">
+            <div class="fas fa-envelope"></div>
+            <input type="text" name="email" placeholder="Email">
+        </div>
+
+        <div class="field">
+            <div class="fas fa-venus-mars"></div>
+            <input type="text" name="gender" placeholder="Gender">
+        </div>
+        
+        <div class="field">
+            <div class="fas fa-lock"></div>
+            <input type="password" name="password" placeholder="Password">
+        </div>
+        
+        <button>SUBMIT</button>
+    </form>
+</div>
