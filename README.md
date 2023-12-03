@@ -1,5 +1,4 @@
-# Project Title
-Issue Tracker
+# Issue Tracker
 
 This repository will help you track issues if you are building any project.
 
