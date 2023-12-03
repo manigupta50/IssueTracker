@@ -5,6 +5,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 import ejsLayouts from 'express-ejs-layouts';
+import cors from 'cors';
 
 import { invalidRoutesHandlerMiddleware } from './src/middlewares/invalidRoutes.middleware.js';
 import { errorHandlerMiddleware } from './src/middlewares/errorHandler.js';
@@ -20,6 +21,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true })); // To parse data and put it in body object
+app.use(cors()); // For providing access to all the Origins
 
 // Logger middleware
 app.use(loggerMiddleware);
