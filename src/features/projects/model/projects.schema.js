@@ -5,12 +5,12 @@ const projectsSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Name is required."],
-        minLength: [5, "Name should be minimum of 5 characters."]
+        minLength: [1, "Name should be minimum of 5 characters."]
     },
     description: {
         type: String,
         required: [true, "Description is required."],
-        minLength: [10, "Description should be at least of 10 characters."]
+        minLength: [1, "Description should be at least of 10 characters."]
     },
     author: {
         type: String,

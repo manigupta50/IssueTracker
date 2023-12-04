@@ -1,3 +1,4 @@
+import { customErrorHandler } from "../../../middlewares/errorHandler.js";
 import { ProjectsModel } from "./projects.schema.js";
 
 export default class ProjectsRepository{
