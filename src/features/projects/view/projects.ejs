@@ -39,8 +39,14 @@
       font-size: 40px;
       color: #2857a4;
       display: inline-block;
-      /* padding-top: 10px; */
+      padding-top: 0;
       margin-right: 0.5rem;
+      /* margin-bottom: 0.5rem; */
+    }
+
+    #create-btn {
+      margin-right: 0;
+      margin-bottom: 1rem;
     }
 
     .section-heading button {
@@ -100,7 +106,7 @@
     .projects-image-container .button-div {
       position: relative;
       float: right;
-      padding: 1rem 1rem 0 0;
+      padding: 0.5rem 1rem 0 0;
     }
 
     span {
@@ -148,7 +154,9 @@
         </span>
         <span> Projects </span>
         <form action="/api/projects/create" method="GET">
-          <button id="create-btn"><i class="fas fa-plus"></i></button>
+          <button id="create-btn">
+            <i class="fas fa-plus"></i>
+          </button>
         </form>
     </h1>
   
