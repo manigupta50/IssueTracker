@@ -22,7 +22,6 @@ export default class IssuesRepository {
     async postCreate(projectId, title, description, labels, author) {
         try {
             const labelsArray = labels.split(",");
-            console.log("labelsArray: " + labelsArray);
             const newIssue = new IssuesModel({ projectId, title, description, labels: labelsArray, author });
             await newIssue.save();
             if(newIssue) {

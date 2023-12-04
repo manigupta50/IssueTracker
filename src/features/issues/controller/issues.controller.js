@@ -43,7 +43,6 @@ export default class IssuesController {
     async postCreate(req, res, next) {
         try {
             const { title, description, labels } = req.body;
-            console.log("labels: " + labels);
             const projectId = req.params.projectId;
             const author = req.cookies.name;
             const created = await this.issuesRepository.postCreate(projectId, title, description, labels, author);
