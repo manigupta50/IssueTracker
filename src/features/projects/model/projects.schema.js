@@ -15,7 +15,7 @@ const projectsSchema = new mongoose.Schema({
     author: {
         type: String,
         required: [true, "Author is required."],
-        minLength: [2, "Author should be at least of 2 characters."]
+        minLength: [1, "Author should be at least of 2 characters."]
     },
     labels: {
         type: [String],

@@ -9,12 +9,12 @@ const issuesSchema = new mongoose.Schema({
     title: {
         type: String,
         required: [true, "Title is required."],
-        minLength: [1, "Title should be minimum of 10 characters."]
+        minLength: [1, "Title should be minimum of 1 characters."]
     },
     description: {
         type: String,
         required: [true, "Description is required."],
-        minLength: [1, "Description should be at least of 10 characters."]
+        minLength: [1, "Description should be at least of 1 characters."]
     },
     labels: {
         type: [String],
@@ -23,7 +23,7 @@ const issuesSchema = new mongoose.Schema({
     author: {
         type: String,
         required: [true, "Author is required."],
-        minLength: [2, "Author should be at least of 2 characters."]
+        minLength: [1, "Author should be at least of 2 characters."]
     },
 });
 
